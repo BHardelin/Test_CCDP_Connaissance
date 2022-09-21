@@ -1,9 +1,9 @@
 package adeo.leroymerlin.cdp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,7 +27,14 @@ public class EventService {
     public List<Event> getFilteredEvents(String query) {
         List<Event> events = eventRepository.findAllBy();
         // Filter the events list in pure JAVA here
+        List<Event> filteredEvent = new ArrayList<>();
+        for (Event event :
+                events) {
+            if(event.getBands().equals(query)) {
+                filteredEvent.add(event);
+            }
+        }
 
-        return events;
+        return filteredEvent;
     }
 }
