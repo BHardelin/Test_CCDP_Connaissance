@@ -24,13 +24,18 @@ public class EventService {
         eventRepository.deleteById(id);
     }
 
+    /**
+     *
+     * @param query
+     * @return new List of events filtered by their title event
+     */
     public List<Event> getFilteredEvents(String query) {
         List<Event> events = eventRepository.findAllBy();
         // Filter the events list in pure JAVA here
         List<Event> filteredEvent = new ArrayList<>();
         for (Event event :
                 events) {
-            if(event.getBands().equals(query)) {
+            if(query.equals(event.getTitle())) {
                 filteredEvent.add(event);
             }
         }

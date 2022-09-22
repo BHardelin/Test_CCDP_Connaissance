@@ -32,7 +32,7 @@ function EventService($http){
     }
 
     function insertReview(event) {
-        return $http.put('/api/events' + event.id, event);
+        return $http.put('/api/events/' + event.id, event);
     }
 }
 
